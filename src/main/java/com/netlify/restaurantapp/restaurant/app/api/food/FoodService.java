@@ -2,9 +2,7 @@ package com.netlify.restaurantapp.restaurant.app.api.food;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FoodService {
@@ -24,7 +22,8 @@ public class FoodService {
     }
 
     public Food getFoodById(Long id) {
-        return foodRepository.findById(id).orElseThrow(null);
+        return foodRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("Food with ID " + id + " not found"));
     }
 
     public void deleteFoodById(Long id) {

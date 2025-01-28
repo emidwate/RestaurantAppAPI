@@ -1,12 +1,9 @@
 package com.netlify.restaurantapp.restaurant.app.api.order.savedOrder;
 
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static org.springframework.core.annotation.OrderUtils.getOrder;
 
 @RestController
 @RequestMapping("/api")

@@ -4,9 +4,7 @@ import com.netlify.restaurantapp.restaurant.app.api.food.Food;
 import com.netlify.restaurantapp.restaurant.app.api.food.FoodRepository;
 import com.netlify.restaurantapp.restaurant.app.api.order.orders.Orders;
 import com.netlify.restaurantapp.restaurant.app.api.order.orders.OrdersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -40,7 +38,8 @@ public class CustomerSavedOrderService {
     }
 
     public void deleteFoodItemFromSavedOrderById(Long orderId, Long foodId) {
-        Orders orders = ordersRepository.findById(orderId).orElseThrow(null);
+        Orders orders = ordersRepository.findById(orderId).orElseThrow(() ->
+                new IllegalArgumentException("Food with ID " + orderId + " not found"));
         if(Orders.Status.ORDERED.toString().equals(orders.getStatus().toString())){
             customerSavedOrderRepository.deleteFoodItemFromSavedOrderById(orderId, foodId);
         } else {
@@ -50,9 +49,11 @@ public class CustomerSavedOrderService {
     }
 
     public void addFoodItemToSavedOrderById(Long orderId, Long foodId) {
-        Orders orders = ordersRepository.findById(orderId).orElseThrow(null);
+        Orders orders = ordersRepository.findById(orderId).orElseThrow(() ->
+                new IllegalArgumentException("Food with ID " + orderId + " not found"));
         if(Orders.Status.ORDERED.toString().equals(orders.getStatus().toString())){
-            Food foodItem = foodRepository.findById(foodId).orElseThrow(null);
+            Food foodItem = foodRepository.findById(foodId).orElseThrow(() ->
+                    new IllegalArgumentException("Food with ID " + foodId + " not found"));
             String foodItemName = foodItem.getName();
             Double foodItemPrice = foodItem.getPrice();
             customerSavedOrderRepository.addFoodItemToOrder(orderId, foodId, foodItemPrice, foodItemName);

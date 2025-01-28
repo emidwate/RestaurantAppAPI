@@ -1,7 +1,6 @@
 package com.netlify.restaurantapp.restaurant.app.api.order.orders;
 
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "orders")

@@ -1,4 +1,6 @@
 # RestaurantApp 
 
-To use this app you have to import database schema.sql file first, you can find it in resources directory.
-
+Import the schema.sql file located in the resources directory into your MariaDB client to set up
+the database. Once the database  is ready navigate to the RestaurantAppApiApplication class in you project
+and run it. After successfully starting the application open your web browser and go to http://locahost:8080
+to access the app.

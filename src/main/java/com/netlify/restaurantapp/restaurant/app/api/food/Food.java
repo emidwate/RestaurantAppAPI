@@ -5,8 +5,6 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 @Table(name = "food_items")
@@ -50,6 +48,10 @@ public class Food {
         this.ingredients = ingredients;
         this.price = price;
         this.emoji = emoji;
+    }
+
+    public void setFoodId(Long food_id) {
+        this.foodId = food_id;
     }
 
     public Long getFoodId() {
