@@ -20,14 +20,14 @@ public class CustomerOrderController {
         return orderService.getOrder();
     }
 
-    @PostMapping("/addNewOrderItem")
-    public void registerNewOrder(@Valid @RequestBody CustomerOrder order) {
+    @PostMapping("/orderItem")
+    public void addItemToOrder(@Valid @RequestBody CustomerOrder order) {
         orderService.addItemToOrder(order);
     }
 
-    @DeleteMapping("/removeOrderItem/{id}")
-    public void deleteOrderItem(@PathVariable("id") Long id) {
-        orderService.deleteOrderItemById(id);
+    @DeleteMapping("/orderItem/{id}")
+    public void deleteItemFromOrder(@PathVariable("id") Long id) {
+        orderService.deleteItemFromOrder(id);
     }
 
     @DeleteMapping("/order/truncate")

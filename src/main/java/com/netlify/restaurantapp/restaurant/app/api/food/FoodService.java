@@ -13,7 +13,7 @@ public class FoodService {
         this.foodRepository = foodRepository;
     }
 
-    public List<Food> getAllFood() {
+    public List<Food> getFoodList() {
         return foodRepository.findAll();
     }
 

@@ -56,7 +56,7 @@ public class CustomerSavedOrderService {
                     new IllegalArgumentException("Food with ID " + foodId + " not found"));
             String foodItemName = foodItem.getName();
             Double foodItemPrice = foodItem.getPrice();
-            customerSavedOrderRepository.addFoodItemToOrder(orderId, foodId, foodItemPrice, foodItemName);
+            customerSavedOrderRepository.addFoodItemToSavedOrderById(orderId, foodId, foodItemPrice, foodItemName);
         } else {
             throw new IllegalArgumentException("Can not add food item to saved order. " +
                     "The status must be ORDERED not " + orders.getStatus().toString());
@@ -65,9 +65,5 @@ public class CustomerSavedOrderService {
 
     public List<CustomerSavedOrder> getSavedOrderById(Long orderId) {
         return customerSavedOrderRepository.getSavedOrderById(orderId);
-    }
-
-    public void deleteSavedOrderById(Long id) {
-        ordersRepository.deleteSavedOrderById(id);
     }
 }

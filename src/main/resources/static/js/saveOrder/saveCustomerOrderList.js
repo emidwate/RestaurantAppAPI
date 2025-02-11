@@ -1,6 +1,6 @@
 export async function saveCustomerOrderList(customerOrder, status) {
     try {
-        const response = await fetch(`/api/saveOrder?status=${status}`, {
+        const response = await fetch(`/api/order?status=${status}`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(customerOrder)

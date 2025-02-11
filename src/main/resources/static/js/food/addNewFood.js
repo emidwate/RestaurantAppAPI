@@ -3,7 +3,7 @@ import { getFoodList } from './fetchFoodList.js'
 
 export async function addNewFood(food) {
     try {
-        const response = await fetch("http://localhost:8080/api/addNewFood", {
+        const response = await fetch("http://localhost:8080/api/food", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

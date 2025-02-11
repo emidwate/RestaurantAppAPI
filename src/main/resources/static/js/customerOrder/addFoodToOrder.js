@@ -3,7 +3,7 @@ import { getOrderList } from "./fetchOrder.js"
 
 export async function addFoodToOrder(foodToOrder) {
     try {
-        const response = await fetch("http://localhost:8080/api/addNewOrderItem", {
+        const response = await fetch("http://localhost:8080/api/orderItem", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

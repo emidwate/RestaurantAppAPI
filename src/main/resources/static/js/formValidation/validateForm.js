@@ -1,4 +1,4 @@
-// Data should be validated more extensively, it's just for task purposes that I created it 
+// Data should be validated more extensively, it's just for task purposes
 
 export function validateForm({name, ingredients, price, emoji}) {
     if (   

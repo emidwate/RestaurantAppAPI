@@ -14,32 +14,27 @@ public class CustomerSavedOrderController {
         this.savedOrderService = savedOrderService;
     }
 
-    @PostMapping("/saveOrder")
+    @PostMapping("/order")
     public void saveOrder(@Valid @RequestBody List<CustomerSavedOrder> savedOrderList,
                           @RequestParam String status) {
         savedOrderService.saveOrder(savedOrderList, status);
     }
 
-    @DeleteMapping("/deleteFoodItemFromSavedOrderById/{orderId}/food/{foodId}")
+    @DeleteMapping("/order/{orderId}/food/{foodId}")
     public void deleteFoodItemFromSavedOrderById(@PathVariable("orderId") Long orderId,
                                                  @PathVariable("foodId") Long foodId) {
         savedOrderService.deleteFoodItemFromSavedOrderById(orderId, foodId);
     }
 
-    @PutMapping("/addNewFoodItemToSavedOrderById/{orderId}/food/{foodId}")
-    public void addNewFoodItemToSavedOrderById(@PathVariable("orderId") Long orderId,
-                                               @PathVariable("foodId") Long foodId) {
+    @PutMapping("/order/{orderId}/food/{foodId}")
+    public void addFoodItemToSavedOrderById(@PathVariable("orderId") Long orderId,
+                                            @PathVariable("foodId") Long foodId) {
         savedOrderService.addFoodItemToSavedOrderById(orderId, foodId);
     }
 
-    @GetMapping("/getSavedOrderById/{orderId}")
-    public List<CustomerSavedOrder> getSavedOrder(@PathVariable("orderId") Long orderId) {
+    @GetMapping("/order/{orderId}")
+    public List<CustomerSavedOrder> getSavedOrderById(@PathVariable("orderId") Long orderId) {
         return savedOrderService.getSavedOrderById(orderId);
-    }
-
-    @DeleteMapping("/deleteSavedOrderById/{id}")
-    public void deleteSavedOrderById(@PathVariable("id") Long id) {
-        savedOrderService.deleteSavedOrderById(id);
     }
 
 }

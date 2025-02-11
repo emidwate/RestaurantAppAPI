@@ -1,6 +1,6 @@
 export async function getFoodList() {
     try {
-        const response = await fetch("http://localhost:8080/api/getFoodList")
+        const response = await fetch("http://localhost:8080/api/foodList")
         if (!response.ok) {
             console.error(`Failed to fetch: ${response.status} ${response.statusText}`)
         }
