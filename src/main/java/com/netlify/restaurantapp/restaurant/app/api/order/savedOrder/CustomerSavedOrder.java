@@ -1,10 +1,9 @@
 package com.netlify.restaurantapp.restaurant.app.api.order.savedOrder;
 
+import com.netlify.restaurantapp.restaurant.app.api.order.orders.Orders;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "saved_order")
@@ -17,7 +16,7 @@ public class CustomerSavedOrder {
 
     @Valid
 
-    @Column(name = "order_id")
+    @Column(name = "order_id", insertable = false, updatable = false)
     private Long orderId;
 
     @Column(name = "food_id")
@@ -31,6 +30,10 @@ public class CustomerSavedOrder {
     @NotBlank(message = "Name cannot be blank")
     @Column(name = "name")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Orders order;
 
     public CustomerSavedOrder() {}
 
@@ -76,5 +79,13 @@ public class CustomerSavedOrder {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Orders getOrder() {
+        return order;
+    }
+
+    public void setOrder(Orders order) {
+        this.order = order;
     }
 }
