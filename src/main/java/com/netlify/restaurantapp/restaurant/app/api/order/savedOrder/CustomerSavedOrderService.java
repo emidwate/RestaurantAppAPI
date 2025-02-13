@@ -31,11 +31,12 @@ public class CustomerSavedOrderService {
         newOrder.setStatus(Orders.Status.valueOf(status.toUpperCase()));
         Orders savedOrderEntry = ordersRepository.save(newOrder);
         for (CustomerSavedOrder savedOrderItem : savedOrderList) {
-            savedOrderItem.setOrderId(savedOrderEntry.getOrdersId());
-            savedOrderItem.setFoodId(savedOrderItem.getFoodId());
+            savedOrderItem.setOrder(savedOrderEntry);
         }
         customerSavedOrderRepository.saveAll(savedOrderList);
     }
+
+
 
     public void deleteFoodItemFromSavedOrderById(Long orderId, Long foodId) {
         Orders orders = ordersRepository.findById(orderId).orElseThrow(() ->

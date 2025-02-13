@@ -47,6 +47,10 @@ public class CustomerOrder {
         return customerOrderId;
     }
 
+    public void setCustomerOrderId(Long customerOrderId) {
+        this.customerOrderId = customerOrderId;
+    }
+
     public String getName() {
         return name;
     }

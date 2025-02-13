@@ -13,18 +13,18 @@ public interface CustomerSavedOrderRepository extends JpaRepository<CustomerSave
 
     @Modifying
     @Transactional
-    @Query("DELETE FROM CustomerSavedOrder c WHERE c.orderId = :orderId AND c.foodId = :foodId")
+    @Query("DELETE FROM CustomerSavedOrder c WHERE c.order.ordersId = :orderId AND c.foodId = :foodId")
     void deleteFoodItemFromSavedOrderById(@Param("orderId") Long orderId, @Param("foodId") Long foodId);
 
     @Modifying
     @Transactional
-    @Query("INSERT INTO CustomerSavedOrder c (c.orderId, c.foodId, c.price, c.name) VALUES (:orderId,:foodId,:foodItemPrice,:foodItemName)")
+    @Query(value = "INSERT INTO saved_order (order_id, food_id, price, name) VALUES " +
+                   "(:orderId, :foodId, :foodItemPrice, :foodItemName)", nativeQuery = true)
     void addFoodItemToSavedOrderById(@Param("orderId") Long orderId,
                                      @Param("foodId") Long foodId,
                                      @Param("foodItemPrice") Double foodItemPrice,
                                      @Param("foodItemName") String foodItemName);
-    @Modifying
-    @Transactional
-    @Query("SELECT c FROM CustomerSavedOrder c WHERE orderId = :orderId")
+
+    @Query("SELECT c FROM CustomerSavedOrder c WHERE c.order.ordersId = :orderId")
     List<CustomerSavedOrder> getSavedOrderById(@Param("orderId") Long orderId);
 }

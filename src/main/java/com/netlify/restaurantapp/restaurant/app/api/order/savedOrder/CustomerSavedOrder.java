@@ -1,5 +1,6 @@
 package com.netlify.restaurantapp.restaurant.app.api.order.savedOrder;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.netlify.restaurantapp.restaurant.app.api.order.orders.Orders;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -16,9 +17,6 @@ public class CustomerSavedOrder {
 
     @Valid
 
-    @Column(name = "order_id", insertable = false, updatable = false)
-    private Long orderId;
-
     @Column(name = "food_id")
     private Long foodId;
 
@@ -33,6 +31,8 @@ public class CustomerSavedOrder {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
+    // Without JsonBackReference on child when we fetch data it creates an infinite loop
+    @JsonBackReference
     private Orders order;
 
     public CustomerSavedOrder() {}
@@ -43,18 +43,17 @@ public class CustomerSavedOrder {
             Double price,
             String name
     ) {
-        this.orderId = order_id;
         this.foodId = food_id;
         this.price = price;
         this.name = name;
     }
 
-    public void setOrderId(Long order_id) {
-        this.orderId = order_id;
+    public Long getSavedOrderId() {
+        return savedOrderId;
     }
 
-    public Long getOderId() {
-        return orderId;
+    public void setSavedOrderId(Long savedOrderId) {
+        this.savedOrderId = savedOrderId;
     }
 
     public Long getFoodId() {
@@ -88,4 +87,15 @@ public class CustomerSavedOrder {
     public void setOrder(Orders order) {
         this.order = order;
     }
+
+    public String toString() {
+        return "CustomerSavedOrder{" +
+                "savedOrderId=" + savedOrderId +
+                ", foodId=" + foodId +
+                ", price=" + price +
+                ", name='" + name + '\'' +
+                ", order=" + (order != null ? order.getOrdersId() : "null") +
+                '}';
+    }
+
 }

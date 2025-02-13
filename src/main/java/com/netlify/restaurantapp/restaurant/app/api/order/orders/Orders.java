@@ -1,5 +1,6 @@
 package com.netlify.restaurantapp.restaurant.app.api.order.orders;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.netlify.restaurantapp.restaurant.app.api.order.savedOrder.CustomerSavedOrder;
 import jakarta.persistence.*;
 
@@ -18,7 +19,9 @@ public class Orders {
     @Column(name = "status")
     private Status status;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    // Without JsonManagedReference when we fetch data it creates an infinite loop
+    @JsonManagedReference
     private List<CustomerSavedOrder> customerSavedOrderList;
 
     public Orders() {}
@@ -56,4 +59,12 @@ public class Orders {
     public void setCustomerSavedOrderList(List<CustomerSavedOrder> customerSavedOrderList) {
         this.customerSavedOrderList = customerSavedOrderList;
     }
+
+    public String toString() {
+        return "Orders{" +
+                "ordersId=" + ordersId +
+                ", status='" + status + '\'' +
+                '}';
+    }
+
 }

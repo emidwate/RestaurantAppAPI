@@ -36,7 +36,7 @@ CREATE TABLE saved_order (
     food_id INT,
     price DECIMAL(10, 2) NOT NULL,
     name VARCHAR(255) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(orders_id) ON DELETE CASCADE,
+    FOREIGN KEY (order_id) REFERENCES orders(orders_id),
     FOREIGN KEY (food_id) REFERENCES food_items(food_id) ON DELETE SET NULL
 );
 
