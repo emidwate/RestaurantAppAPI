@@ -1,6 +1,6 @@
-# RestaurantApp 
+# RestaurantAppAPI
 
-Simple restaurant project using Spring Web, Maven, JUnit, Mockito and MariaDB.
+Enhanced the restaurant app project by implementing backend endpoints with Spring Web, Maven, JUnit, Mockito and MariaDB.
 
 ### Setting up the Database
 
@@ -12,7 +12,7 @@ Once the database is ready navigate to the RestaurantAppApiApplication class in 
 ### Running the Application
 
 To run the application, use one of the following commands: 
-- On Windows: ```./mvnw spring-boot:run``` 
+- On Windows: ```./mvnw.cmd spring-boot:run``` 
 - On Linux```./mvnw spring-boot:run```
 
 Alternatively, you can install Maven on your Machine and run the project that way.
