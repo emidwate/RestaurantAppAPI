@@ -11,7 +11,9 @@ public class CustomerOrderTest {
 
     @BeforeEach
     void setUp() {
-        customerOrder = new CustomerOrder("Bigos", 12.0);
+        customerOrder = new CustomerOrder();
+        customerOrder.setName("Bigos");
+        customerOrder.setPrice(12.0);
     }
 
     @Test

@@ -5,7 +5,13 @@ import com.netlify.restaurantapp.restaurant.app.api.order.orders.Orders;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name = "saved_order")
 public class CustomerSavedOrder {
@@ -31,71 +37,9 @@ public class CustomerSavedOrder {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    // Without JsonBackReference on child when we fetch data it creates an infinite loop
+
+    // Using @JsonBackReference on the child to prevent infinite loop during data fetch
     @JsonBackReference
     private Orders order;
-
-    public CustomerSavedOrder() {}
-
-    public CustomerSavedOrder (
-            Long order_id,
-            Long food_id,
-            Double price,
-            String name
-    ) {
-        this.foodId = food_id;
-        this.price = price;
-        this.name = name;
-    }
-
-    public Long getSavedOrderId() {
-        return savedOrderId;
-    }
-
-    public void setSavedOrderId(Long savedOrderId) {
-        this.savedOrderId = savedOrderId;
-    }
-
-    public Long getFoodId() {
-        return foodId;
-    }
-
-    public void setFoodId(Long food_id) {
-        this.foodId = food_id;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Orders getOrder() {
-        return order;
-    }
-
-    public void setOrder(Orders order) {
-        this.order = order;
-    }
-
-    public String toString() {
-        return "CustomerSavedOrder{" +
-                "savedOrderId=" + savedOrderId +
-                ", foodId=" + foodId +
-                ", price=" + price +
-                ", name='" + name + '\'' +
-                ", order=" + (order != null ? order.getOrdersId() : "null") +
-                '}';
-    }
 
 }

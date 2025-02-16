@@ -3,9 +3,15 @@ package com.netlify.restaurantapp.restaurant.app.api.order.orders;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.netlify.restaurantapp.restaurant.app.api.order.savedOrder.CustomerSavedOrder;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
 @Entity
 @Table(name = "orders")
 public class Orders {
@@ -19,52 +25,17 @@ public class Orders {
     @Column(name = "status")
     private Status status;
 
+    @Setter
+    @Getter
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-    // Without JsonManagedReference when we fetch data it creates an infinite loop
+
+    // Using JsonManagedReference on the parent to prevent infinite loop during fetch
     @JsonManagedReference
     private List<CustomerSavedOrder> customerSavedOrderList;
-
-    public Orders() {}
-
-    public Orders(Status status) {
-        this.status = status;
-    }
-
-    public void setOrdersId(Long orders_id) {
-        this.ordersId = orders_id;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Long getOrdersId() {
-        return ordersId;
-    }
 
     public enum Status {
         ORDERED,
         PENDING,
         COMPLETED
     }
-
-    public List<CustomerSavedOrder> getCustomerSavedOrderList() {
-        return customerSavedOrderList;
-    }
-
-    public void setCustomerSavedOrderList(List<CustomerSavedOrder> customerSavedOrderList) {
-        this.customerSavedOrderList = customerSavedOrderList;
-    }
-
-    public String toString() {
-        return "Orders{" +
-                "ordersId=" + ordersId +
-                ", status='" + status + '\'' +
-                '}';
-    }
-
 }
