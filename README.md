@@ -1,6 +1,7 @@
 # RestaurantAppAPI
 
-Enhanced the restaurant app project by implementing backend endpoints with Spring Web, Maven, JUnit, Mockito and MariaDB.
+Enhanced the restaurant app project by implementing backend endpoints with Spring Web, Maven, JUnit, Mockito, Lombok
+and MariaDB.
 
 ### Setting up the Database
 
