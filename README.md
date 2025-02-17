@@ -1,14 +1,7 @@
 # RestaurantAppAPI
 
-Enhanced the restaurant app project by implementing backend endpoints with Spring Web, Maven, JUnit, Mockito, Lombok
-and MariaDB.
-
-### Setting up the Database
-
-Import the ```schema.sql``` file located in the ```resources``` directory into your MariaDB client to set up
-the database. 
-
-Once the database is ready navigate to the RestaurantAppApiApplication class in you project.
+Enhanced the restaurant app project by implementing backend endpoints with Spring Web, Maven, JUnit, Mockito, Lombok,
+Liquibase and MariaDB.
 
 ### Running the Application
 
@@ -18,7 +11,7 @@ To run the application, use one of the following commands:
 
 Alternatively, you can install Maven on your Machine and run the project that way.
 
-After successfully starting the application open your web browser and go to http://locahost:8080  to access the app. 
+After successfully starting the application open your web browser and go to ```http://locahost:8080```  to access the app. 
 
 ### Additional Information
 
@@ -27,4 +20,4 @@ After successfully starting the application open your web browser and go to http
 
 You can change this data in ```application.properties``` file
 
-Ensure you have ```Java``` installed on your machine as it is required to run the application.
+Ensure you have ```Java``` and ```mariadb``` installed on your machine as it is required to run the application.
