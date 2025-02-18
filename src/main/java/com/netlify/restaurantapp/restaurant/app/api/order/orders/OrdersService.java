@@ -10,11 +10,6 @@ import java.util.List;
 
 @Service
 public class OrdersService {
-    private final OrdersRepository ordersRepository;
-
-    public OrdersService(OrdersRepository ordersRepository) {
-        this.ordersRepository = ordersRepository;
-    }
 
     @PersistenceContext
     private EntityManager entityManager;

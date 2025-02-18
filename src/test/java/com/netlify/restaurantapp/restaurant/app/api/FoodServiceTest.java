@@ -3,8 +3,6 @@ package com.netlify.restaurantapp.restaurant.app.api;
 import com.netlify.restaurantapp.restaurant.app.api.food.Food;
 import com.netlify.restaurantapp.restaurant.app.api.food.FoodRepository;
 import com.netlify.restaurantapp.restaurant.app.api.food.FoodService;
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,10 +17,10 @@ public class FoodServiceTest {
     private Food food;
 
     @Mock
-    FoodRepository foodRepository;
+    private FoodRepository foodRepository;
 
     @InjectMocks
-    FoodService foodService;
+    private FoodService foodService;
 
     @BeforeEach
     void setUp() {

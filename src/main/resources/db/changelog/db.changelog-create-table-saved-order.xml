@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="4" author="MateuszChmielewski">
+    <changeSet id="create-table-saved_order" author="MateuszChmielewski">
         <createTable tableName="saved_order">
             <column name="saved_order_id" autoIncrement="true" type="int" >
                 <constraints nullable="false" primaryKey="true"/>

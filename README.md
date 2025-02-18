@@ -3,6 +3,15 @@
 Enhanced the restaurant app project by implementing backend endpoints with Spring Web, Maven, JUnit, Mockito, Lombok,
 Liquibase and MariaDB.
 
+### Setting up the Database
+
+Ensure you have database ```raa``` created in your MariaDB client. If it doesn't exist, you can create it by running 
+the following commands
+
+```DROP DATABASE IF EXISTS raa;```
+
+```CREATE DATABASE raa;```
+
 ### Running the Application
 
 To run the application, use one of the following commands: 

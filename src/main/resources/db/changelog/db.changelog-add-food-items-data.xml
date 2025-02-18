@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="5" author="MateuszChmielewski">
+    <changeSet id="add-data-to-food_items-table" author="MateuszChmielewski">
         <insert tableName="food_items">
             <column name="name" value="Pizza"/>
             <column name="ingredients" value="pepperoni, mushrooms, mozzarella"/>
