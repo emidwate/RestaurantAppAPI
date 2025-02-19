@@ -6,7 +6,6 @@ export function renderFoodList(foodList) {
     const foodContainer = document.getElementById('food-container')
 
     foodContainer.innerHTML = ''
-
     foodList.forEach(food => {
         const foodItem = document.createElement('div')
         foodItem.classList.add('food-item') 
@@ -15,8 +14,8 @@ export function renderFoodList(foodList) {
             <p><strong>Ingredients:</strong> ${food.ingredients.split(",")}</p>
             <p><strong>Price:</strong> $${food.price.toFixed(2)}</p>
             <div id="order-btns-container">
-                <button class="remove-btn" data-id="${food.foodId}">-</button>
-                <button class="add-to-order-btn" data-id="${food.foodId}">+</button>
+                <button class="remove-btn" data-id="${food.id}">-</button>
+                <button class="add-to-order-btn" data-id="${food.id}">+</button>
             </div>
         `;
 

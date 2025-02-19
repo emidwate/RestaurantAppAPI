@@ -1,29 +1,38 @@
 package com.netlify.restaurantapp.restaurant.app.api.food;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
 import java.util.List;
 
 @Service
+@ComponentScan(basePackages = {"com.netlify.restaurantapp.restaurant.app.api.food"})
 public class FoodService {
     private final FoodRepository foodRepository;
+    private final FoodMapper foodMapper;
 
-    @Autowired
-    public FoodService(FoodRepository foodRepository) {
+    public FoodService(FoodRepository foodRepository,
+                       FoodMapper foodMapper) {
         this.foodRepository = foodRepository;
+        this.foodMapper = foodMapper;
     }
 
-    public List<Food> getFoodList() {
-        return foodRepository.findAll();
+    public List<FoodDTO> getFoodList() {
+        List<Food> foodList = foodRepository.findAll();
+        return foodList.stream()
+                .map(foodMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public void addNewFood(Food food) {
+    public void addNewFood(FoodDTO foodDTO) {
+        Food food = foodMapper.toEntity(foodDTO);
         foodRepository.save(food);
     }
 
-    public Food getFoodById(Long id) {
-        return foodRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("Food with ID " + id + " not found"));
+    public FoodDTO getFoodById(Long id) {
+        return foodRepository.findById(id)
+                .map(foodMapper::toDTO)
+                .orElseThrow(() -> new IllegalArgumentException("Food with ID " + id + " not found"));
     }
 
     public void deleteFoodById(Long id) {

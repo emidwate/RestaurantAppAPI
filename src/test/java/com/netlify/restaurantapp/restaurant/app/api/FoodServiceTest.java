@@ -1,8 +1,6 @@
 package com.netlify.restaurantapp.restaurant.app.api;
 
-import com.netlify.restaurantapp.restaurant.app.api.food.Food;
-import com.netlify.restaurantapp.restaurant.app.api.food.FoodRepository;
-import com.netlify.restaurantapp.restaurant.app.api.food.FoodService;
+import com.netlify.restaurantapp.restaurant.app.api.food.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +12,10 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class FoodServiceTest {
 
-    private Food food;
+    private FoodDTO foodDTO;
+
+    @Mock
+    private FoodMapper foodMapper;
 
     @Mock
     private FoodRepository foodRepository;
@@ -24,16 +25,16 @@ public class FoodServiceTest {
 
     @BeforeEach
     void setUp() {
-        food = new Food();
+        foodDTO = new FoodDTO();
     }
 
     @Test
     void shouldAddNewFood() {
-        food.setName("Bigos");
-        food.setIngredients("kapusta świeża, kapusta kiszona, boczek");
-        food.setPrice(10.0);
-        food.setEmoji("\uD83C\uDF72");
-        foodService.addNewFood(food);
-        verify(foodRepository, times(1)).save(food);
+        foodDTO.setName("Bigos");
+        foodDTO.setIngredients("kapusta świeża, kapusta kiszona, boczek");
+        foodDTO.setPrice(10.0);
+        foodDTO.setEmoji("\uD83C\uDF72");
+        foodService.addNewFood(foodDTO);
+        verify(foodRepository, times(1)).save(foodMapper.toEntity(foodDTO));
     }
 }

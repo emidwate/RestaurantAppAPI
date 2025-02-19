@@ -1,12 +1,15 @@
 package com.netlify.restaurantapp.restaurant.app.api.food;
 
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class FoodController {
+
+    @Autowired
     private final FoodService foodService;
 
     public FoodController(FoodService foodService) {
@@ -14,12 +17,12 @@ public class FoodController {
     }
 
     @GetMapping("/foodList")
-    public List<Food> getFoodList() {
+    public List<FoodDTO> getFoodList() {
         return foodService.getFoodList();
     }
 
     @GetMapping("/food/{id}")
-    public Food getFoodById(@PathVariable("id") Long id) {
+    public FoodDTO getFoodById(@PathVariable("id") Long id) {
         return foodService.getFoodById(id);
     }
 
@@ -29,9 +32,7 @@ public class FoodController {
     }
 
     @PostMapping("/food")
-    public void addNewFood(@Valid @RequestBody Food food) {
-        foodService.addNewFood(food);
+    public void addNewFood(@Valid @RequestBody FoodDTO foodDTO) {
+        foodService.addNewFood(foodDTO);
     }
-
-
 }

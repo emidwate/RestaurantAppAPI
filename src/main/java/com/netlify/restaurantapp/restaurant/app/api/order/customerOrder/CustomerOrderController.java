@@ -22,6 +22,7 @@ public class CustomerOrderController {
 
     @PostMapping("/orderItem")
     public void addItemToOrder(@Valid @RequestBody CustomerOrder order) {
+        System.out.println(order);
         orderService.addItemToOrder(order);
     }
 
