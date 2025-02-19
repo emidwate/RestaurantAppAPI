@@ -1,7 +1,7 @@
 # RestaurantAppAPI
 
 Enhanced the restaurant app project by implementing backend endpoints with Spring Web, Maven, JUnit, Mockito, Lombok,
-Liquibase and MariaDB.
+Liquibase, MapStruct and MariaDB.
 
 ### Setting up the Database
 
@@ -24,9 +24,9 @@ After successfully starting the application open your web browser and go to ```h
 
 ### Additional Information
 
-- The default TCP/IP port for MariaDB is ```3306```. 
+- The default TCP/IP port for MariaDB is ```3306``` (This port is used for the database connection)
 - The default username is ```root```, and the default password is also set to ```root```
 
 You can change this data in ```application.properties``` file
 
-Ensure you have ```Java``` and ```mariadb``` installed on your machine as it is required to run the application.
+Ensure you have ```Java``` and ```MariaDB``` installed on your machine as it is required to run the application.

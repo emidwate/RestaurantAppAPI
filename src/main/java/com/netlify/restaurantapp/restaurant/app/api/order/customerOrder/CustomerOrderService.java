@@ -10,7 +10,6 @@ public class CustomerOrderService {
 
     private final CustomerOrderRepository orderRepository;
 
-    @Autowired
     public CustomerOrderService(CustomerOrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
