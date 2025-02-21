@@ -17,7 +17,7 @@ export function renderFoodList(foodList) {
                 <button class="remove-btn" data-id="${food.id}">-</button>
                 <button class="add-to-order-btn" data-id="${food.id}">+</button>
             </div>
-        `;
+        `
 
         foodContainer.appendChild(foodItem)
     });

@@ -16,14 +16,13 @@ public class CustomerOrderController {
     }
 
     @GetMapping("/orderList")
-    public List<CustomerOrder> getOrder() {
+    public List<CustomerOrderDTO> getOrder() {
         return orderService.getOrder();
     }
 
     @PostMapping("/orderItem")
-    public void addItemToOrder(@Valid @RequestBody CustomerOrder order) {
-        System.out.println(order);
-        orderService.addItemToOrder(order);
+    public void addItemToOrder(@Valid @RequestBody CustomerOrderDTO orderDTO) {
+        orderService.addItemToOrder(orderDTO);
     }
 
     @DeleteMapping("/orderItem/{id}")

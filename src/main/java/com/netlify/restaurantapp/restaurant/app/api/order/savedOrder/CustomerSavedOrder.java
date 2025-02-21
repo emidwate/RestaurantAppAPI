@@ -3,7 +3,6 @@ package com.netlify.restaurantapp.restaurant.app.api.order.savedOrder;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.netlify.restaurantapp.restaurant.app.api.order.orders.Orders;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,8 +19,6 @@ public class CustomerSavedOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "saved_order_id")
     private Long savedOrderId;
-
-    @Valid
 
     @Column(name = "food_id")
     private Long foodId;

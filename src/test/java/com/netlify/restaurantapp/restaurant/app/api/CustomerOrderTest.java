@@ -12,17 +12,17 @@ public class CustomerOrderTest {
     @BeforeEach
     void setUp() {
         customerOrder = new CustomerOrder();
-        customerOrder.setName("Bigos");
-        customerOrder.setPrice(12.0);
     }
 
     @Test
     void testName() {
+        customerOrder.setName("Bigos");
         assertEquals("Bigos", customerOrder.getName());
     }
 
     @Test
     void testPrice() {
+        customerOrder.setPrice(12.0);
         assertEquals(12.0, customerOrder.getPrice());
     }
 

@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomerSavedOrderTest {
     private CustomerSavedOrder customerSavedOrder;
-    private Orders order;
 
     @BeforeEach
     void setUp() {
@@ -51,6 +50,4 @@ public class CustomerSavedOrderTest {
         assertEquals(2L, order.getOrdersId());
         assertEquals(Orders.Status.COMPLETED, order.getStatus());
     }
-
-
 }

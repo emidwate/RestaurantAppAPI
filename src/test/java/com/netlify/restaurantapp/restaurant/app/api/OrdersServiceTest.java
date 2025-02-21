@@ -5,6 +5,7 @@ import com.netlify.restaurantapp.restaurant.app.api.order.orders.OrdersRepositor
 import com.netlify.restaurantapp.restaurant.app.api.order.orders.OrdersService;
 import com.netlify.restaurantapp.restaurant.app.api.order.savedOrder.CustomerSavedOrder;
 import com.netlify.restaurantapp.restaurant.app.api.order.savedOrder.CustomerSavedOrderRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,9 +29,15 @@ public class OrdersServiceTest {
     @Autowired
     private OrdersService ordersService;
 
+    private Orders orders;
+
+    @BeforeEach
+    void setUp() {
+        orders = new Orders();
+    }
+
     @Test
     void testSaveOrderToDatabase() {
-        Orders orders = new Orders();
         orders.setStatus(Orders.Status.COMPLETED);
 
         CustomerSavedOrder customerSavedOrder = new CustomerSavedOrder();
@@ -47,12 +54,12 @@ public class OrdersServiceTest {
         ordersRepository.save(orders);
         customerSavedOrderRepository.save(customerSavedOrder);
 
-        assertThat(ordersRepository.findById(orders.getOrdersId()).isPresent()).isTrue();
+        assertThat(ordersRepository.findById(orders.getOrdersId())).isPresent();
 
         assertThat(customerSavedOrderRepository.getSavedOrderById(orders.getOrdersId())).isNotEmpty();
 
         ordersService.deleteSavedOrderById(orders.getOrdersId());
 
-        assertThat(ordersRepository.findById(orders.getOrdersId()).isEmpty()).isTrue();
+        assertThat(ordersRepository.findById(orders.getOrdersId())).isEmpty();
     };
 }

@@ -1,7 +1,6 @@
 package com.netlify.restaurantapp.restaurant.app.api.order.customerOrder;
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +17,6 @@ public class CustomerOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_order_id")
     private Long customerOrderId;
-
-    @Valid
 
     @NotNull(message = "Name cannot be null")
     @NotBlank(message = "Name cannot be blank")
