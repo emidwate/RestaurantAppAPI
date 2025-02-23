@@ -1,7 +1,6 @@
 package com.netlify.restaurantapp.restaurant.app.api.food;
 
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import java.util.List;
 @RequestMapping("/api")
 public class FoodController {
 
-    @Autowired
     private final FoodService foodService;
 
     public FoodController(FoodService foodService) {

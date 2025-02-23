@@ -11,9 +11,7 @@
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="order_id" type="int"/>
-            <column name="food_id" type="int">
-                <constraints deleteCascade="true"/>
-            </column>
+            <column name="food_id" type="int" />
             <column name="price" type="decimal(10,2)">
                 <constraints nullable="false"/>
             </column>
@@ -25,11 +23,13 @@
                                  baseColumnNames="order_id"
                                  constraintName="fk_saved_order_order_id"
                                  referencedTableName="orders"
-                                 referencedColumnNames="orders_id"/>
-        <addForeignKeyConstraint baseTableName="customer_order"
+                                 referencedColumnNames="orders_id"
+                                 onDelete="SET NULL"/>
+        <addForeignKeyConstraint baseTableName="saved_order"
                                  baseColumnNames="food_id"
                                  constraintName="fk_saved_order_food_id"
                                  referencedTableName="food_items"
-                                 referencedColumnNames="food_id"/>
+                                 referencedColumnNames="food_id"
+                                 onDelete="SET NULL"/>
     </changeSet>
 </databaseChangeLog>
