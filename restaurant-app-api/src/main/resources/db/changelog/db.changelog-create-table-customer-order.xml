@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create-table-customer_order" author="MateuszChmielewski">
+        <createTable tableName="customer_order">
+            <column name="customer_order_id" autoIncrement="true" type="int" >
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="food_id" type="int">
+                <constraints foreignKeyName="food_id"/>
+            </column>
+        </createTable>
+            <addForeignKeyConstraint baseTableName="customer_order"
+                                     baseColumnNames="food_id"
+                                     constraintName="fk_customer_order_food_id"
+                                     referencedTableName="food_items"
+                                     referencedColumnNames="food_id"
+                                     onDelete="SET NULL"/>
+    </changeSet>
+</databaseChangeLog>

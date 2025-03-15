@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Restaurant App API</title>
+</head>
+<body>
+<header>
+    <h1>Matthew's Diner</h1>
+    <p>The best, burgers and pizzas in town.</p>
+</header>
+<main>
+    <div id="food-container">
+    </div>
+    <div id="add-food-container">
+        <form id="add-food-form">
+            <h2>Add New Food</h2>
+            <label for="food-name">Name:</label>
+            <input type="text" id="food-name" name="name" placeholder="Food name" required />
+
+            <label for="food-ingredients">Ingredients (comma separator):</label>
+            <input type="text" id="food-ingredients" name="ingredients" placeholder="Potato, Onion, Salt" required />
+
+            <label for="food-price">Price:</label>
+            <input type="number" id="food-price" name="price" placeholder="10.99" step="0.5" required />
+
+            <label for="food-emoji">Emoji:</label>
+            <input type="text" id="food-emoji" name="emoji" placeholder="🍔" />
+
+            <button type="button" id="add-food-btn">Add Food</button>
+            <p id="form-message"></p>
+        </form>
+    </div>
+</main>
+<footer>
+    <div id="food-order">
+    </div>
+    <button id="truncate-order-table-btn">Clear table</button>
+    <select id="order-status">
+        <option value="COMPLETED">Complete</option>
+        <option value="PENDING">Pending</option>
+        <option value="ORDERED">Ordered</option>
+    </select>
+    <button id="save-order">Save order</button>
+</footer>
+<script src="./js/script.js" type="module"></script>
+<script src="./js/saveOrder/saveOrder.js" type="module"></script>
+</body>
+</html>

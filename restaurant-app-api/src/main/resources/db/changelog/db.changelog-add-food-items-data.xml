@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="add-data-to-food_items-table" author="MateuszChmielewski">
+        <insert tableName="food_items">
+            <column name="name" value="Pizza"/>
+            <column name="ingredients" value="pepperoni, mushrooms, mozzarella"/>
+            <column name="price" value="14"/>
+            <column name="emoji" value="🍕"/>
+        </insert>
+        <insert tableName="food_items">
+            <column name="name" value="Hamburger"/>
+            <column name="ingredients" value="beef, cheese, lettuce"/>
+            <column name="price" value="12"/>
+            <column name="emoji" value="🍔"/>
+        </insert>
+        <insert tableName="food_items">
+            <column name="name" value="Beer"/>
+            <column name="ingredients" value="pepperoni, mushrooms, mozzarella"/>
+            <column name="price" value="12"/>
+            <column name="emoji" value="🍺"/>
+        </insert>
+        <insert tableName="food_items">
+            <column name="name" value="Hot Dog"/>
+            <column name="ingredients" value="sausage, bread, ketchup"/>
+            <column name="price" value="8"/>
+            <column name="emoji" value="🌭"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
