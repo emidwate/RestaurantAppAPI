@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>app.restaurant</groupId>
+        <artifactId>api-definitions</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>food-api</artifactId>
+
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>7.8.0</version>
+                    <executions>
+                        <execution>
+                            <id>food-api-generation</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
+                                <generatorName>spring</generatorName>
+                                <apiPackage>food.api</apiPackage>
+                                <modelPackage>food.models</modelPackage>
+                                <supportingFilesToGenerate>
+                                    ApiUtil.java
+                                </supportingFilesToGenerate>
+                                <configOptions>
+                                    <delegatePattern>true</delegatePattern>
+                                    <interfaceOnly>true</interfaceOnly>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+</project>
