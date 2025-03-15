@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>food-api</artifactId>
+    <artifactId>restaurant-api</artifactId>
 
         <build>
             <plugins>

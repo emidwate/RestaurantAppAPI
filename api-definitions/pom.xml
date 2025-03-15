@@ -9,7 +9,7 @@
     <name>api-definitions</name>
 
     <modules>
-        <module>api</module>
+        <module>restaurant-api</module>
     </modules>
 
     <parent>
