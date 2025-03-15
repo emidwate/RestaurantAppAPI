@@ -28,8 +28,8 @@
                             <configuration>
                                 <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
                                 <generatorName>spring</generatorName>
-                                <apiPackage>food.api</apiPackage>
-                                <modelPackage>food.models</modelPackage>
+                                <apiPackage>generated.api</apiPackage>
+                                <modelPackage>generated.models</modelPackage>
                                 <supportingFilesToGenerate>
                                     ApiUtil.java
                                 </supportingFilesToGenerate>

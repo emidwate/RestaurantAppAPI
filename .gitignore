@@ -1,2 +1,9 @@
+# IntelliJ IDEA files
 *.iml
 .idea/
+
+# Maven build artifacts
+target/
+
+# Logs
+*.log
