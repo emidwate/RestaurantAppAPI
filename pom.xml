@@ -5,11 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>app.restaurant</groupId>
-    <artifactId>restaurantapp</artifactId>
+    <artifactId>restaurant-app</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>Restaurant App</name>
+
+    <developers>
+        <developer>
+            <name>Mateusz Chmielewski</name>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

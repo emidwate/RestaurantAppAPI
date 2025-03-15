@@ -6,27 +6,12 @@
 
     <parent>
         <groupId>app.restaurant</groupId>
-        <artifactId>restaurantapp</artifactId>
+        <artifactId>restaurant-app</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>restaurant-app-api</artifactId>
-
-    <developers>
-        <developer>
-            <name>Mateusz Chmielewski</name>
-            <roles>
-                <role>developer</role>
-            </roles>
-        </developer>
-    </developers>
-
-    <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -80,8 +65,8 @@
         </dependency>
         <dependency>
             <groupId>app.restaurant</groupId>
-            <artifactId>food-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>api-definitions</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
