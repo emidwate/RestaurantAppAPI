@@ -1,6 +1,7 @@
 package com.netlify.restaurantapp.restaurant.app.api;
 
 import com.netlify.restaurantapp.restaurant.app.api.food.Food;
+import com.netlify.restaurantapp.restaurant.app.api.food.FoodRepository;
 import com.netlify.restaurantapp.restaurant.app.api.order.customerOrder.CustomerOrder;
 import com.netlify.restaurantapp.restaurant.app.api.order.customerOrder.CustomerOrderMapper;
 import com.netlify.restaurantapp.restaurant.app.api.order.customerOrder.CustomerOrderRepository;
@@ -17,6 +18,9 @@ public class CustomerOrderServiceTest {
     
     private Food food;
     private CustomerOrder customerOrder;
+
+    @Autowired
+    private FoodRepository foodRepository;
 
     @Autowired
     private CustomerOrderMapper customerOrderMapper;
@@ -37,7 +41,10 @@ public class CustomerOrderServiceTest {
     void testAddItemToOrder() {
         food.setPrice(14.0);
         food.setName("Pizza");
-        food.setFoodId(1L);
+        food.setEmoji("🍕");
+        food.setIngredients("Cheese, Tomato Sauce");
+
+        food = foodRepository.save(food);
 
         customerOrder.setPrice(food.getPrice());
         customerOrder.setName(food.getName());

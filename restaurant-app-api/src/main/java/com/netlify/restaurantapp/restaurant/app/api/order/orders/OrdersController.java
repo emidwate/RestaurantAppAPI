@@ -1,11 +1,22 @@
 package com.netlify.restaurantapp.restaurant.app.api.order.orders;
 
-import jakarta.validation.Valid;
+import generated.api.OrdersApi;
+import generated.api.SaveOrdersApi;
+import generated.models.OrdersDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.NativeWebRequest;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class OrdersController {
+public class OrdersController implements OrdersApi, SaveOrdersApi {
+
+    public Optional<NativeWebRequest> getRequest() {
+        return Optional.empty();
+    }
+
     private final OrdersService ordersService;
     private final OrdersMapper ordersMapper;
 
@@ -15,13 +26,13 @@ public class OrdersController {
         this.ordersMapper = ordersMapper;
     }
 
-    @DeleteMapping("/order/{ordersId}")
-    public void deleteSavedOrderById(@PathVariable("ordersId") Long id) {
-        ordersService.deleteSavedOrderById(id);
+    public ResponseEntity<Void> deleteSavedOrderById(Long ordersId) {
+        ordersService.deleteSavedOrderById(ordersId);
+        return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/saveOrders")
-    public void saveOrders(@Valid @RequestBody OrdersDTO ordersDTO) {
+    public ResponseEntity<Void> saveOrders(OrdersDTO ordersDTO) {
         ordersService.saveOrders(ordersMapper.toEntity(ordersDTO));
+        return ResponseEntity.ok().build();
     }
 }

@@ -14,7 +14,7 @@ paths:
       summary: Returns a list of all food currently available in the restaurant
       operationId: getFoodList
       responses:
-        "200":
+        200:
           description: All available food
           content:
             application/json:
@@ -22,6 +22,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/FoodDTO"
+
   /food/{id}:
     get:
       summary: Get food item by id
@@ -33,7 +34,7 @@ paths:
           schema:
             $ref: "#/components/schemas/GivenId"
       responses:
-        "200":
+        200:
           description: Get food item by id
           content:
             application/json:
@@ -52,8 +53,9 @@ paths:
             type: integer
             format: int64
       responses:
-        "200":
+        200:
           description: Food item deleted
+
   /food:
     post:
       summary: Add new food to the list
@@ -65,14 +67,15 @@ paths:
             schema:
               $ref: "#/components/schemas/FoodDTO"
       responses:
-        "201":
+        200:
           description: Food added
+
   /orderList:
     get:
       summary: Returns a list of all customer order items being currently in the basket
       operationId: getOrder
       responses:
-        "200":
+        200:
           description: All customer order items from the basket
           content:
             application/json:
@@ -80,6 +83,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CustomerOrderDTO"
+
   /orderItem:
     post:
       summary: Add food to customer order basket
@@ -91,8 +95,9 @@ paths:
             schema:
               $ref: "#/components/schemas/CustomerOrderDTO"
       responses:
-        "201":
+        200:
           description: Add food to customer order basket
+
   /orderItem/{id}:
     delete:
       summary: Delete item from customer order basket
@@ -104,15 +109,44 @@ paths:
           schema:
             $ref: "#/components/schemas/GivenId"
       responses:
-        "200":
+        200:
           description: Food item deleted from customer order basket
-  /order/truncate:
+
+  /order/basket/truncate:
     delete:
       summary: Truncate customer order basket
       operationId: truncateOrderTable
       responses:
-        "200":
+        200:
           description: Truncated customer order basket
+
+  /orders/{ordersId}:
+    delete:
+      summary: Delete orders by id
+      operationId: deleteSavedOrderById
+      parameters:
+        - name: ordersId
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/GivenId"
+      responses:
+        200:
+          description: Deleted saved order
+
+  /saveOrders:
+    post:
+      summary: Save order to database
+      operationId: saveOrders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrdersDTO"
+      responses:
+        200:
+          description: Saved order to database
 
 
 components:
@@ -166,3 +200,48 @@ components:
         foodId:
           type: integer
           format: int64
+    CustomerSavedOrderDTO:
+      type: object
+      required:
+        - savedOrderId
+        - foodId
+        - price
+        - name
+        - order
+      properties:
+        savedOrderId:
+          type: integer
+          format: int64
+        foodId:
+          type: integer
+          format: int64
+        price:
+          type: number
+          minimum: 0
+          nullable: false
+        name:
+          type: string
+          nullable: false
+        order:
+          $ref: "#/components/schemas/OrdersDTO"
+
+    OrdersDTO:
+      type: object
+      required:
+        - ordersId
+        - status
+        - customerSavedOrderList
+      properties:
+        ordersId:
+          type: integer
+          format: int64
+        status:
+          type: string
+          enum:
+            - ORDERED
+            - PENDING
+            - COMPLETED
+        customerSavedOrderList:
+          type: array
+          items:
+            $ref: "#/components/schemas/CustomerSavedOrderDTO"

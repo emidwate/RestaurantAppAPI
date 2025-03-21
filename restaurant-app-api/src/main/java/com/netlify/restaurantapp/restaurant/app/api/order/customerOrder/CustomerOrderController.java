@@ -5,6 +5,7 @@ import generated.api.OrderItemApi;
 import generated.api.OrderListApi;
 import generated.models.CustomerOrderDTO;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api")
 public class CustomerOrderController implements OrderListApi, OrderItemApi, OrderApi {
-    @Override
+
     public Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }

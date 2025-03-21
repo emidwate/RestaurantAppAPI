@@ -2,7 +2,7 @@ import { renderOrderList } from "./renderOrderList.js"
 
 export async function truncateOrderTable() {
     try {
-        const response = await fetch("/api/order/truncate", {
+        const response = await fetch("/api/order/basket/truncate", {
             method: "DELETE"
         })
         if (!response.ok) {
